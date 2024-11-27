@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "bishi_pico")(type "KiCad")(uri "${KIPRJMOD}/bishi_pico.kicad_sym")(options "")(descr ""))
+)
