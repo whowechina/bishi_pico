@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="125mm"
+   height="88mm"
+   viewBox="0 0 125 88"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="Bishi_pico_logo.svg"
+   inkscape:export-filename="Bishi_pico_logo.png"
+   inkscape:export-xdpi="362.85715"
+   inkscape:export-ydpi="362.85715"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.7385171"
+     inkscape:cx="359.5042"
+     inkscape:cy="501.681"
+     inkscape:window-width="1920"
+     inkscape:window-height="1010"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <defs
+     id="defs2">
+    <rect
+       x="18.956907"
+       y="491.52551"
+       width="731.19495"
+       height="301.95645"
+       id="rect236" />
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="图层 2">
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10"
+       id="rect249"
+       width="127.54163"
+       height="90.640526"
+       x="-0.7165252"
+       y="-1.7913078"
+       rx="0"
+       ry="7.9154234" />
+  </g>
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,14.68878,-97.089266)"
+       id="text234"
+       style="font-weight:bold;font-size:85.3333px;font-family:'Warsaw Gothic';-inkscape-font-specification:'Warsaw Gothic Bold';word-spacing:18px;white-space:pre;shape-inside:url(#rect236);display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"><tspan
+         x="18.957031"
+         y="564.91203"
+         id="tspan5894"><tspan
+           dx="0 0 0 0 0 -18.000002 18.000002"
+           id="tspan5892">BISHI PICO</tspan></tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:#fffff8;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       d="m 17.94676,42.79618 c -14.1761169,0 -4.707721,0.25333 -7.66324,0.25333 l 6.96658,3.41996 -1.203317,6.26992 -6.5232519,5.00327 106.3986789,-0.25333 -4.11661,-3.98995 1.13999,-6.01659 6.83991,-3.86329 -6.33326,0.0633 1.77782,-10.28874 C 98.275849,28.74152 -0.04413588,21.40046 17.94676,42.79618 Z"
+       id="path452"
+       sodipodi:nodetypes="cccccccccccc" />
+    <path
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       d="m 31.21618,23.16309 1.223187,9.87988"
+       id="path6036"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       d="M 36.536114,22.14977 V 33.0737"
+       id="path6038"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       d="M 42.109377,21.89644 39.916336,33.96936"
+       id="path6040"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       d="m 82.502174,24.84497 v 8.1699"
+       id="path6042"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       d="m 87.315449,25.66829 c -0.75999,8.3599 -0.75999,8.3599 -0.75999,8.3599"
+       id="path6044" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       d="m 92.845249,26.65537 -1.72985,6.3595"
+       id="path6046"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
