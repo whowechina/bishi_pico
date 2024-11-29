@@ -460,6 +460,163 @@
 				)
 			)
 		)
+		(symbol "Diode:ESD9B3.3ST5G"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "ESD9B3.3ST5G"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Diode_SMD:D_SOD-923"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.onsemi.com/pub/Collateral/ESD9B-D.PDF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "ESD protection diode, 3.3Vrwm, SOD-923"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode TVS ESD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "D*SOD?923*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "ESD9B3.3ST5G_0_1"
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -1.27) (xy 0 0) (xy -2.54 1.27) (xy -2.54 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 1.27) (xy 0 1.27) (xy 0 -1.27) (xy -0.508 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.27) (xy 2.54 -1.27) (xy 0 0) (xy 2.54 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "ESD9B3.3ST5G_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Switch:SW_DIP_x01"
 			(pin_names
 				(offset 0) hide)
@@ -2885,6 +3042,12 @@
 		(uuid "5b5962de-83aa-4822-aa1e-70c232d5c6f5")
 	)
 	(junction
+		(at 266.7 229.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5bfaa6e5-e2a6-4d40-b39c-d64a5e36947f")
+	)
+	(junction
 		(at 60.325 41.275)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2975,6 +3138,12 @@
 		(uuid "a6510268-9ea9-4511-a5a1-5ad5fd3d9120")
 	)
 	(junction
+		(at 279.4 229.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b58a1536-0947-4282-9ee9-695d9747d2d1")
+	)
+	(junction
 		(at 67.945 61.595)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3005,6 +3174,12 @@
 		(uuid "ba37d704-4b6a-4ae5-b6f6-03b00a6bc144")
 	)
 	(junction
+		(at 254 229.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bc472d7b-d1db-4411-9d5a-d332b83ded83")
+	)
+	(junction
 		(at 82.55 214.63)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3023,6 +3198,12 @@
 		(uuid "c3f17750-3fc3-4663-83f6-20ddfeb51337")
 	)
 	(junction
+		(at 228.6 229.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c447c905-b07e-4895-abe1-ef9df20ce3e7")
+	)
+	(junction
 		(at 222.25 185.42)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3039,6 +3220,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ce032ee4-818d-414f-aae9-3a0451d91e48")
+	)
+	(junction
+		(at 241.3 229.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ded8a994-8d81-4028-b607-fe001054bfae")
 	)
 	(junction
 		(at 209.55 185.42)
@@ -3370,6 +3557,16 @@
 	)
 	(wire
 		(pts
+			(xy 241.3 229.87) (xy 254 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f755851-47e4-41c2-be77-3d53d5cae972")
+	)
+	(wire
+		(pts
 			(xy 120.65 214.63) (xy 133.35 214.63)
 		)
 		(stroke
@@ -3497,6 +3694,16 @@
 			(type default)
 		)
 		(uuid "215d8a96-7e0d-4134-9211-84031d202951")
+	)
+	(wire
+		(pts
+			(xy 228.6 229.87) (xy 241.3 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21621a5f-c713-498b-9e93-da6118d6b34d")
 	)
 	(wire
 		(pts
@@ -3957,6 +4164,16 @@
 			(type default)
 		)
 		(uuid "6e759866-db1c-42a4-a513-bbd032fed569")
+	)
+	(wire
+		(pts
+			(xy 266.7 229.87) (xy 279.4 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70d56a26-b59f-4263-8cc0-86c1c07e5d3c")
 	)
 	(wire
 		(pts
@@ -4510,6 +4727,16 @@
 	)
 	(wire
 		(pts
+			(xy 254 229.87) (xy 266.7 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3f0a7ff-1906-42d3-9268-0418b4e43471")
+	)
+	(wire
+		(pts
 			(xy 131.445 108.585) (xy 142.875 108.585)
 		)
 		(stroke
@@ -4627,6 +4854,16 @@
 			(type default)
 		)
 		(uuid "d899ec87-a2f2-49b2-96c7-e23895e938b3")
+	)
+	(wire
+		(pts
+			(xy 215.9 229.87) (xy 228.6 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9960d39-795d-4fea-a111-71a2bb521a0c")
 	)
 	(wire
 		(pts
@@ -4848,6 +5085,17 @@
 		)
 		(uuid "ff39caf4-e30a-4e3f-b8a5-6ac3f9871893")
 	)
+	(label "USB_DN"
+		(at 279.4 222.25 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right bottom)
+		)
+		(uuid "02dac7cd-65e2-4e33-bac3-a65979ec5c74")
+	)
 	(label "SDA"
 		(at 131.445 113.665 0)
 		(fields_autoplaced yes)
@@ -4926,6 +5174,17 @@
 		(uuid "2f0b8ec0-2789-4b86-b692-83ccedb1b3ac")
 	)
 	(label "TX0"
+		(at 215.9 222.25 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right bottom)
+		)
+		(uuid "334deb56-9e5b-4d5f-b245-cd10fd38afe4")
+	)
+	(label "TX0"
 		(at 95.885 78.105 180)
 		(fields_autoplaced yes)
 		(effects
@@ -4991,6 +5250,17 @@
 		)
 		(uuid "4b8b7679-a15b-41b8-8bfe-3b500c6f2deb")
 	)
+	(label "RX0"
+		(at 228.6 222.25 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right bottom)
+		)
+		(uuid "4bf9cec6-bd57-432c-9940-f7b9b649893d")
+	)
 	(label "K4"
 		(at 216.535 133.35 0)
 		(fields_autoplaced yes)
@@ -5001,6 +5271,17 @@
 			(justify left bottom)
 		)
 		(uuid "4e7f0709-4cbc-43ab-b428-ec8f496a9352")
+	)
+	(label "RX1"
+		(at 254 222.25 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right bottom)
+		)
+		(uuid "55677bfa-4890-4ed1-a7e3-6d175d661089")
 	)
 	(label "VB1"
 		(at 269.875 60.325 0)
@@ -5045,6 +5326,28 @@
 			(justify right bottom)
 		)
 		(uuid "766bc1da-d32b-442f-8c5a-5dfbf8193a60")
+	)
+	(label "USB_DP"
+		(at 95.885 56.515 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right bottom)
+		)
+		(uuid "85b8d7e9-605c-47b1-8ad8-befad9b9ac52")
+	)
+	(label "USB_DP"
+		(at 266.7 222.25 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right bottom)
+		)
+		(uuid "91d1aa27-ba61-4891-8975-5087f308ffdf")
 	)
 	(label "SCL"
 		(at 272.415 67.945 180)
@@ -5100,6 +5403,17 @@
 			(justify right bottom)
 		)
 		(uuid "c91ce7bd-2217-4752-b8f6-c6dc5696199e")
+	)
+	(label "TX1"
+		(at 241.3 222.25 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right bottom)
+		)
+		(uuid "ca576733-1971-4760-a27c-22aea11c0e9f")
 	)
 	(label "TX0"
 		(at 275.59 120.65 180)
@@ -5199,6 +5513,17 @@
 			(justify right bottom)
 		)
 		(uuid "f7d9cd34-988e-4fd4-af70-9dc5235f8a51")
+	)
+	(label "USB_DN"
+		(at 95.885 53.975 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right bottom)
+		)
+		(uuid "fc2b0762-cc56-4af1-bba6-36c0dedce1b0")
 	)
 	(label "RX0"
 		(at 275.59 123.19 180)
@@ -5763,6 +6088,148 @@
 		)
 	)
 	(symbol
+		(lib_id "Diode:ESD9B3.3ST5G")
+		(at 228.6 226.06 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0f644337-0017-4131-851a-13c844a23a62")
+		(property "Reference" "TV2"
+			(at 231.14 226.0599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ESD9B3.3ST5G"
+			(at 225.425 224.7901 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-323_HandSoldering"
+			(at 228.6 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/ESD9B-D.PDF"
+			(at 228.6 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "ESD protection diode, 3.3Vrwm, SOD-923"
+			(at 228.6 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "978136f5-4acf-490a-b466-3d8319611624")
+		)
+		(pin "2"
+			(uuid "478f2f5c-a0bd-4c0f-befe-f5587a28dbf9")
+		)
+		(instances
+			(project "bishi_pico"
+				(path "/2e3f5573-c264-4a8b-a2f0-0e6473d39aad"
+					(reference "TV2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:ESD9B3.3ST5G")
+		(at 266.7 226.06 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1560b5ff-07f1-493a-93f0-3473d31b7428")
+		(property "Reference" "TV5"
+			(at 269.24 226.0599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ESD9B3.3ST5G"
+			(at 263.525 224.7901 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-323_HandSoldering"
+			(at 266.7 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/ESD9B-D.PDF"
+			(at 266.7 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "ESD protection diode, 3.3Vrwm, SOD-923"
+			(at 266.7 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "69d45b1d-5313-443f-a783-529257d99a52")
+		)
+		(pin "2"
+			(uuid "fe82c032-00f3-4af1-aa90-ca5880796aba")
+		)
+		(instances
+			(project "bishi_pico"
+				(path "/2e3f5573-c264-4a8b-a2f0-0e6473d39aad"
+					(reference "TV5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "bishi_pico:PiPico_No_SWD")
 		(at 113.665 102.235 0)
 		(unit 1)
@@ -5945,6 +6412,77 @@
 			(project ""
 				(path "/2e3f5573-c264-4a8b-a2f0-0e6473d39aad"
 					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:ESD9B3.3ST5G")
+		(at 254 226.06 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "211d2e4e-3a4f-47dd-8d1a-1e039079e84a")
+		(property "Reference" "TV4"
+			(at 256.54 226.0599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ESD9B3.3ST5G"
+			(at 250.825 224.7901 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-323_HandSoldering"
+			(at 254 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/ESD9B-D.PDF"
+			(at 254 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "ESD protection diode, 3.3Vrwm, SOD-923"
+			(at 254 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "13f30e68-393c-45a8-ab96-5e871852bb9d")
+		)
+		(pin "2"
+			(uuid "fdd9b447-926a-4980-ac11-52220257df25")
+		)
+		(instances
+			(project "bishi_pico"
+				(path "/2e3f5573-c264-4a8b-a2f0-0e6473d39aad"
+					(reference "TV4")
 					(unit 1)
 				)
 			)
@@ -6227,6 +6765,77 @@
 			(project ""
 				(path "/2e3f5573-c264-4a8b-a2f0-0e6473d39aad"
 					(reference "#PWR0103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:ESD9B3.3ST5G")
+		(at 215.9 226.06 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "32308d14-9995-4174-879a-21d6a62da0c5")
+		(property "Reference" "TV1"
+			(at 218.44 226.0599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ESD9B3.3ST5G"
+			(at 212.725 224.7901 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-323_HandSoldering"
+			(at 215.9 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/ESD9B-D.PDF"
+			(at 215.9 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "ESD protection diode, 3.3Vrwm, SOD-923"
+			(at 215.9 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bd78393e-80e3-4fee-ab34-c8c880717478")
+		)
+		(pin "2"
+			(uuid "27986888-551c-4395-9545-399bdb6c2a90")
+		)
+		(instances
+			(project ""
+				(path "/2e3f5573-c264-4a8b-a2f0-0e6473d39aad"
+					(reference "TV1")
 					(unit 1)
 				)
 			)
@@ -8694,6 +9303,77 @@
 		)
 	)
 	(symbol
+		(lib_id "Diode:ESD9B3.3ST5G")
+		(at 241.3 226.06 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ca38fca3-254c-48e3-9d07-00361033dd7a")
+		(property "Reference" "TV3"
+			(at 243.84 226.0599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ESD9B3.3ST5G"
+			(at 238.125 224.7901 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-323_HandSoldering"
+			(at 241.3 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/ESD9B-D.PDF"
+			(at 241.3 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "ESD protection diode, 3.3Vrwm, SOD-923"
+			(at 241.3 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "15162073-5dc3-45ba-accf-6503da705c59")
+		)
+		(pin "2"
+			(uuid "8d4a0bf4-56e3-47ca-ae0c-fd0030d5d32a")
+		)
+		(instances
+			(project "bishi_pico"
+				(path "/2e3f5573-c264-4a8b-a2f0-0e6473d39aad"
+					(reference "TV3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:VBUS")
 		(at 285.115 106.045 0)
 		(unit 1)
@@ -9091,6 +9771,77 @@
 		)
 	)
 	(symbol
+		(lib_id "Diode:ESD9B3.3ST5G")
+		(at 279.4 226.06 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d5043be7-42a3-4e1d-ba52-4740b1fcb4e3")
+		(property "Reference" "TV6"
+			(at 281.94 226.0599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ESD9B3.3ST5G"
+			(at 276.225 224.7901 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-323_HandSoldering"
+			(at 279.4 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/ESD9B-D.PDF"
+			(at 279.4 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "ESD protection diode, 3.3Vrwm, SOD-923"
+			(at 279.4 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ab07dacf-9974-49ed-a9f5-4069c50435da")
+		)
+		(pin "2"
+			(uuid "d8476b48-1801-4147-8b45-01eb5f16fa9e")
+		)
+		(instances
+			(project "bishi_pico"
+				(path "/2e3f5573-c264-4a8b-a2f0-0e6473d39aad"
+					(reference "TV6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "bishi_pico:WS2812B_Unified")
 		(at 82.55 207.01 0)
 		(unit 1)
@@ -9226,6 +9977,71 @@
 			(project ""
 				(path "/2e3f5573-c264-4a8b-a2f0-0e6473d39aad"
 					(reference "#PWR0111")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 279.4 229.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e633e8c4-d3ea-4eac-a6a1-c7c48096e956")
+		(property "Reference" "#PWR011"
+			(at 279.4 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 279.527 234.2642 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 279.4 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 279.4 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 279.4 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "300e7956-8342-410c-b4ab-da056a578799")
+		)
+		(instances
+			(project "bishi_pico"
+				(path "/2e3f5573-c264-4a8b-a2f0-0e6473d39aad"
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
