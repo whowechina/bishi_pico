@@ -28,23 +28,13 @@ static void disp_spin()
 {
     printf("[Spin]\n");
     printf("  Units Per Turn: %d.\n", bishi_cfg->spin.units_per_turn);
-    for (int i = 0; i < 5; i++) {
-        printf("  Spinner %d: %s, %s.\n", i + 1,
-               spin_present(i) ? "OK" : "ERROR",
-               bishi_cfg->spin.reversed[i] ? "Reversed" : "Forward");
-    }
-}
-
-static void disp_pedal()
-{
-    printf("[Pedal]\n");
-    printf("  Internal: %s.\n", bishi_cfg->pedal.internal ? "ON" : "OFF");
-    printf("  External: %s.\n", bishi_cfg->pedal.external ? "ON" : "OFF");
+    printf("  Spinner: %s, %s.\n", spin_present() ? "OK" : "ERROR",
+            bishi_cfg->spin.reversed ? "Reversed" : "Forward");
 }
 
 void handle_display(int argc, char *argv[])
 {
-    const char *usage = "Usage: display [light|spin|pedal]\n";
+    const char *usage = "Usage: display [light|spin]\n";
     if (argc > 1) {
         printf(usage);
         return;
@@ -53,20 +43,16 @@ void handle_display(int argc, char *argv[])
     if (argc == 0) {
         disp_light();
         disp_spin();
-        disp_pedal();
         return;
     }
 
-    const char *choices[] = {"light", "spin", "pedal" };
+    const char *choices[] = {"light", "spin" };
     switch (cli_match_prefix(choices, count_of(choices), argv[0])) {
         case 0:
             disp_light();
             break;
         case 1:
             disp_spin();
-            break;
-        case 2:
-            disp_pedal();
             break;
         default:
             printf(usage);
@@ -137,7 +123,7 @@ static void handle_spin_invert(int id, const char *dir)
         return;
     }
 
-    bishi_cfg->spin.reversed[id] = match;
+    bishi_cfg->spin.reversed = (match == 1);
 
     config_changed();
     disp_spin();
@@ -169,33 +155,6 @@ static void handle_spin(int argc, char *argv[])
     handle_spin_invert(match, argv[1]);
 }
 
-static void handle_pedal(int argc, char *argv[])
-{
-    const char *usage = "Usage: pedal <internal|external> <on|off>\n";
-    if (argc != 2) {
-        printf(usage);
-        return;
-    }
-
-    const char *target_choices[] = {"internal", "external"};
-    const char *onoff_choices[] = {"off", "on"};
-    int target = cli_match_prefix(target_choices, count_of(target_choices), argv[0]);
-    int onoff = cli_match_prefix(onoff_choices, 2, argv[1]);
-    if ((target < 0) || (onoff < 0)) {
-        printf(usage);
-        return;
-    }
-
-    if (target == 0) {
-        bishi_cfg->pedal.internal = onoff;
-    } else if (target == 1) {
-        bishi_cfg->pedal.external = onoff;
-    }
-
-    config_changed();
-    disp_pedal();
-}
-
 static void handle_save()
 {
     save_request(true);
@@ -212,7 +171,6 @@ void commands_init()
     cli_register("display", handle_display, "Display all config.");
     cli_register("level", handle_level, "Set LED brightness level.");
     cli_register("spin", handle_spin, "Set spin rate.");
-    cli_register("pedal", handle_pedal, "Set pedal mode.");
     cli_register("save", handle_save, "Save config to flash.");
     cli_register("factory", handle_factory_reset, "Reset everything to default.");
 }

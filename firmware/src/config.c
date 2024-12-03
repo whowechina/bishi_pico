@@ -14,13 +14,10 @@ bishi_cfg_t *bishi_cfg;
 static bishi_cfg_t default_cfg = {
     .spin = {
         .units_per_turn = 80,
+        .reversed = false,
     },
     .light = {
         .level = 128,
-    },
-    .pedal = {
-        .internal = true,
-        .external = true,
     },
 };
 

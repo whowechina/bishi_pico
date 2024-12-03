@@ -1,7 +1,7 @@
 function(make_firmware board board_def)
     pico_sdk_init()
     add_executable(${board}
-        main.c light.c button.c spin.c save.c config.c commands.c cli.c
+        main.c light.c button.c spin.c save.c config.c chain.c commands.c cli.c
         tmag5273.c usb_descriptors.c)
     target_compile_definitions(${board} PUBLIC ${board_def})
     pico_enable_stdio_usb(${board} 1)
@@ -13,8 +13,8 @@ function(make_firmware board board_def)
     target_include_directories(${board} PRIVATE ${CMAKE_CURRENT_LIST_DIR})
     
     target_link_libraries(${board} PRIVATE
-        pico_multicore pico_stdlib hardware_pio hardware_pwm hardware_flash
-        hardware_adc hardware_i2c hardware_watchdog
+        pico_multicore pico_stdlib hardware_uart hardware_pio hardware_pwm
+        hardware_flash hardware_adc hardware_i2c hardware_watchdog
         tinyusb_device tinyusb_board)
 
     pico_add_extra_outputs(${board})

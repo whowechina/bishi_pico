@@ -13,6 +13,7 @@
 #include "pico/multicore.h"
 #include "pico/bootrom.h"
 
+#include "hardware/clocks.h"
 #include "hardware/gpio.h"
 #include "hardware/sync.h"
 #include "hardware/structs/ioqspi.h"
@@ -31,42 +32,80 @@
 #include "light.h"
 #include "button.h"
 #include "spin.h"
+#include "chain.h"
 
-#define WHITE 0xffffff
+static struct {
+    uint32_t cab_off, cab_on;
+    uint32_t spin_off, spin_on;
+    uint32_t a_off, a_on;
+    uint32_t b_off, b_on;
+    uint32_t c_off, c_on;
+} light_theme[3][5] = {
+    {
+        { 0 },
+        { RED, WHITE, GREEN, WHITE, RED, WHITE, BLACK, BLACK, BLUE, WHITE },
+        { GREEN, WHITE, GREEN, WHITE, RED, WHITE, BLACK, BLACK, BLUE, WHITE },
+        { BLUE, WHITE, GREEN, WHITE, RED, WHITE, BLACK, BLACK, BLUE, WHITE },
+        { YELLOW, WHITE, GREEN, WHITE, RED, WHITE, BLACK, BLACK, BLUE, WHITE },
+    },
+    {
+        { 0 },
+        { RED, WHITE, YELLOW, WHITE, RED, WHITE, GREEN, WHITE, BLUE, WHITE },
+        { GREEN, WHITE, YELLOW, WHITE, RED, WHITE, GREEN, WHITE, BLUE, WHITE },
+        { BLUE, WHITE, YELLOW, WHITE, RED, WHITE, GREEN, WHITE, BLUE, WHITE },
+        { YELLOW, WHITE, YELLOW, WHITE, RED, WHITE, GREEN, WHITE, BLUE, WHITE },
+    },
+};
+
+static void light_render()
+{
+    uint32_t phase = time_us_32() >> 16;
+    uint8_t theme = bishi_cfg->theme % 2;
+    uint8_t id = bishi_runtime.chain_id % 5;
+
+    light_theme[theme][0].cab_off = rgb32_from_hsv(51 * 0 + phase, 255, 128);
+    light_theme[theme][0].spin_off = rgb32_from_hsv(51 * 1 + phase, 255, 128);
+    light_theme[theme][0].a_off = rgb32_from_hsv(51 * 2 + phase, 255, 128);
+    light_theme[theme][0].b_off = rgb32_from_hsv(51 * 3 + phase, 255, 128);
+    light_theme[theme][0].c_off = rgb32_from_hsv(51 * 4 + phase, 255, 128);
+    light_theme[theme][0].cab_on = WHITE;
+    light_theme[theme][0].spin_on = WHITE;
+    light_theme[theme][0].a_on = WHITE;
+    light_theme[theme][0].b_on = WHITE;
+    light_theme[theme][0].c_on = WHITE;
+
+    light_set_cab(light_theme[theme][id].cab_off, false);
+    light_set_spinner(light_theme[theme][id].spin_off, false);
+    light_set_button(2, light_theme[theme][id].a_off, false);
+    light_set_button(1, light_theme[theme][id].b_off, false);
+    light_set_button(0, light_theme[theme][id].c_off, false);
+
+    uint16_t button = button_read();
+    if (button & 0x01) {
+        light_set_spinner(light_theme[theme][id].spin_on, false);
+    }
+
+    if (button & 0x02) {
+        light_set_button(2, light_theme[theme][id].a_on, false);
+    }
+    if (button & 0x04) {
+        light_set_button(1, light_theme[theme][id].b_on, false);
+    }
+    if (button & 0x08) {
+        light_set_button(0, light_theme[theme][id].c_on, false);
+    }
+}
 
 static void run_lights()
 {
-    uint16_t button = button_read();
-
-    uint32_t phase = time_us_32() >> 16;
-    uint32_t color = rgb32_from_hsv(phase + 51, 255, 128);
-    if (button & 0x01) {
-        color = WHITE;
+    static uint64_t next_frame = 0;
+    uint64_t now = time_us_64();
+    if (now < next_frame) {
+        return;
     }
-    light_set_spinner(color, false);
+    next_frame = now + 1000000 / 120; // 120Hz
 
-    for (int i = 0; i < 3; i++) {
-        color = rgb32_from_hsv(phase + (i + 1) * 51, 255, 128);
-        if (button & (1 << (3 - i))) {
-            color = WHITE;
-        }
-        light_set_button(i, color, false);
-    }
-
-    color = rgb32_from_hsv(phase + 51 * 4, 255, 128);
-    light_set_cab(color, false);
-}
-
-static void runtime_setup()
-{
-    uint16_t button = button_read();
-
-    bool aux_down = button & 0x40;
-    bool int_pedal = button & 0x80;
-
-    if (aux_down && int_pedal) {
-        bishi_runtime.ext_pedal_invert = button & 0x100;
-    }
+    light_render();
 }
 
 static mutex_t core1_io_lock;
@@ -90,19 +129,32 @@ struct __attribute__((packed)) {
 
 static void hid_update()
 {
-    hid_report.buttons = button_read();
-    hid_report.joy[0] = spin_units(0);
-    hid_report.joy[1] = spin_units(0);
-    hid_report.joy[2] = spin_units(0);
-    hid_report.joy[3] = spin_units(0);
+    static uint64_t last_report = 0;
+    uint64_t now = time_us_64();
+    if (now - last_report < 1000) {
+        return;
+    }
+    last_report = now;
+
+    const uint8_t *report = chain_report();
+    hid_report.buttons = ((report[6] & 0x0f) << 12) | ((report[4] & 0x0f) << 8) |
+                         ((report[2] & 0xff) << 4) | (report[0] & 0x0f);
+    hid_report.joy[0] = report[1];
+    hid_report.joy[1] = report[3];
+    hid_report.joy[2] = report[5];
+    hid_report.joy[3] = report[7];
 
     if (tud_hid_ready()) {
         tud_hid_n_report(0, REPORT_ID_JOYSTICK, &hid_report, sizeof(hid_report));
     }
 }
 
+#define LOOP_HZ 4000
+
 static void core0_loop()
 {
+    uint64_t next_frame = 0;
+
     while(1) {
         tud_task();
 
@@ -113,10 +165,16 @@ static void core0_loop()
 
         button_update();
         spin_update();
-        hid_update();
-        runtime_setup();
+        chain_report_self(button_read(), spin_units());
 
-        sleep_us(900);
+        chain_update();
+        hid_update();
+
+        uint64_t now = time_us_64();
+        if (now < next_frame) {
+            sleep_us(next_frame - now - 1);
+        }
+        next_frame += 1000000 / LOOP_HZ;
     }
 }
 
@@ -137,22 +195,34 @@ static void update_check()
         }
     }
 
-    if (pressed >= 4) {
+    if (pressed >= 3) {
         sleep_ms(100);
         reset_usb_boot(0, 2);
         return;
     }
 }
 
-static void detect_pedal_polarity()
+static void  theme_check()
 {
-    uint16_t buttons = button_read();
-    bishi_runtime.ext_pedal_invert = buttons & 0x100;
+    uint16_t button = button_read();
+    if (button & 0x01) {
+        bishi_cfg->theme = 0;
+    } else if (button & 0x04) {
+        bishi_cfg->theme = 1;
+    } else if (bishi_cfg->theme > 1) {
+        bishi_cfg->theme = 0;
+    } else {
+        return;
+    }
+
+    config_changed();
 }
 
 void init()
 {
     sleep_ms(50);
+    set_sys_clock_khz(150000, true);
+
     board_init();
 
     update_check();
@@ -167,12 +237,12 @@ void init()
     light_init();
     button_init();
     spin_init();
-
-    detect_pedal_polarity();
+    chain_init();
 
     cli_init("bishi_pico>", "\n   << Bishi Pico Controller >>\n"
                             " https://github.com/whowechina\n\n");
     
+    theme_check();
     commands_init();
 }
 

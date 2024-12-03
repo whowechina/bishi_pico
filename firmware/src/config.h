@@ -17,23 +17,18 @@ typedef struct {
 typedef struct __attribute__((packed)) {
     struct {
         uint8_t units_per_turn;
-        uint8_t reversed[5];
+        bool reversed;
     } spin;
     struct {
-        bool internal;
-        bool external;
-    } pedal;
-    struct {
-        rgb_hsv_t colors[12];
         uint8_t level;
-        uint8_t reserved[15];
     } light;
+    uint8_t theme;
 } bishi_cfg_t;
 
 typedef struct {
     uint16_t fps[2];
-    bool key_stuck;
-    bool ext_pedal_invert;
+    uint8_t chain_id;
+    uint64_t sync_expire;
 } bishi_runtime_t;
 
 extern bishi_cfg_t *bishi_cfg;

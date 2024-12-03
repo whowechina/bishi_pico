@@ -14,10 +14,21 @@
 #define BUS_I2C_SCL 21
 #define BUS_I2C_FREQ 400*1000
 
-#define SPIN_DEF { 19 }
+#define SPIN_VCC_DEF 19
  
  /* Spin, A, B, C */
 #define BUTTON_DEF { 22, 13, 14, 15 }
+
+#define UART_UP uart0
+#define UART_UP_TX 0
+#define UART_UP_RX 1
+
+#define UART_DOWN uart1
+#define UART_DOWN_TX 4
+#define UART_DOWN_RX 5
+
+#define UART_BAUDRATE 720000
+
 
 #else
 

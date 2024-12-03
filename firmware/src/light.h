@@ -25,4 +25,19 @@ void light_set(uint8_t index, uint32_t color);
 
 void light_set_cab(uint32_t color, bool hid);
 
+#if RGB_ORDER == GRB
+#define RGB(r, g, b) ((g << 16) | (r << 8) | b)
+#elif RGB_ORDER == RGB
+#define RGB(r, g, b) ((r << 16) | (g << 8) | b)
+#endif
+
+#define RED RGB(255, 0, 0)
+#define GREEN RGB(0, 255, 0)
+#define BLUE RGB(0, 0, 255)
+#define YELLOW RGB(255, 255, 0)
+#define CYAN RGB(0, 255, 255)
+#define MAGENTA RGB(255, 0, 255)
+#define WHITE RGB(255, 255, 255)
+#define BLACK RGB(0, 0, 0)
+
 #endif
