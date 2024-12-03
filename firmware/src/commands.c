@@ -98,7 +98,7 @@ static void handle_level(int argc, char *argv[])
 
 static void handle_spin_rate(const char *rate)
 {
-    const char *usage = "Usage: spin rate <units_per_turn>\n"
+    const char *usage = "Usage: spin <units_per_turn>\n"
                         "  units_per_turn: 20..255\n";
     int units = cli_extract_non_neg_int(rate, 0);
     if ((units < 20) || (units > 255)) {
@@ -111,48 +111,41 @@ static void handle_spin_rate(const char *rate)
     disp_spin();
 }
 
-static void handle_spin_invert(int id, const char *dir)
-{
-    const char *usage = "Usage: spin <id> <forward|reversed>\n"
-                        "  id: 1..5\n";
-
-    const char *choices[] = {"forward", "reversed"};
-    int match = cli_match_prefix(choices, count_of(choices), dir);
-    if (match < 0) {
-        printf(usage);
-        return;
-    }
-
-    bishi_cfg->spin.reversed = (match == 1);
-
-    config_changed();
-    disp_spin();
-}
-
 static void handle_spin(int argc, char *argv[])
 {
     const char *usage = "Usage: spin rate <units_per_turn>\n"
-                        "       spin <id> <normal|reverse>\n"
-                        "  units_per_turn: 20..255\n"
-                        "  id: 1..5\n";
-    if (argc != 2) {
+                        "       spin <normal|reverse>\n"
+                        "  units_per_turn: 20..255\n";
+
+    if (argc < 1) {
         printf(usage);
         return;
     }
 
-    const char *choices[] = { "1", "2", "3", "4", "5", "rate" };
+    const char *choices[] = { "normal", "reversed", "rate" };
     int match = cli_match_prefix(choices, count_of(choices), argv[0]);
     if (match < 0) {
         printf(usage);
         return;
     }
 
-    if (match == 5) {
+    if (match < 2) {
+        if (argc == 1) {
+            bishi_cfg->spin.reversed = (match == 1);
+            config_changed();
+            disp_spin();
+        } else {
+            printf(usage);
+        }
+        return;
+    }
+
+    if ((match == 2) && (argc == 2)) {
         handle_spin_rate(argv[1]);
         return;
     }
 
-    handle_spin_invert(match, argv[1]);
+    printf(usage);
 }
 
 static void handle_save()

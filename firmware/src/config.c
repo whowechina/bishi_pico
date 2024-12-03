@@ -25,6 +25,10 @@ bishi_runtime_t bishi_runtime;
 
 static void config_loaded()
 {
+    if (bishi_cfg->spin.units_per_turn < 20) {
+        bishi_cfg->spin.units_per_turn = 80;
+        config_changed();
+    }
 }
 
 void config_changed()
