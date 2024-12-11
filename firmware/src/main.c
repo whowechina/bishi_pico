@@ -55,12 +55,21 @@ static struct {
         { BLUE, WHITE, YELLOW, WHITE, RED, WHITE, GREEN, WHITE, BLUE, WHITE },
         { YELLOW, WHITE, YELLOW, WHITE, RED, WHITE, GREEN, WHITE, BLUE, WHITE },
     },
+    {
+        { 0 },
+        { BLACK, BLACK, RED, WHITE, GREY, WHITE, GREY, WHITE, GREY, WHITE },
+        { BLACK, BLACK, BLACK, BLACK, GREY, WHITE, GREY, WHITE, GREY, WHITE },
+        { BLACK, BLACK, BLUE, WHITE, GREY, WHITE, GREY, WHITE, GREY, WHITE },
+        { BLACK, GREY, BLACK, GREY, BLACK, GREY, BLACK, GREY, BLACK, GREY },
+    }, 
 };
+
+#define THEME_NUM count_of(light_theme)
 
 static void light_render()
 {
     uint32_t phase = time_us_32() >> 16;
-    uint8_t theme = bishi_cfg->theme % 2;
+    uint8_t theme = bishi_cfg->theme % THEME_NUM;
     uint8_t id = bishi_runtime.chain_id % 5;
 
     light_theme[theme][0].cab_off = rgb32_from_hsv(51 * 0 + phase, 255, 128);
@@ -195,24 +204,29 @@ static void update_check()
         }
     }
 
-    if (pressed >= 3) {
+    if (pressed >= 4) {
         sleep_ms(100);
         reset_usb_boot(0, 2);
         return;
     }
 }
 
-static void  theme_check()
+static void theme_check()
 {
     uint16_t button = button_read();
-    if (button & 0x01) {
-        bishi_cfg->theme = 0;
-    } else if (button & 0x04) {
-        bishi_cfg->theme = 1;
-    } else if (bishi_cfg->theme > 1) {
-        bishi_cfg->theme = 0;
-    } else {
-        return;
+    switch (button) {
+        case 0x01:
+            bishi_cfg->theme = 0;
+            break;
+        case 0x04:
+            bishi_cfg->theme = 1;
+            break;
+        case 0x0a:
+            bishi_cfg->theme = 2;
+            break;
+        default:
+            bishi_cfg->theme = 0;
+            break;
     }
 
     config_changed();

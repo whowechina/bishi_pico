@@ -38,6 +38,9 @@ void light_set_cab(uint32_t color, bool hid);
 #define CYAN RGB(0, 255, 255)
 #define MAGENTA RGB(255, 0, 255)
 #define WHITE RGB(255, 255, 255)
+#define GREY RGB(128, 128, 128)
+#define ORANGE RGB(255, 165, 0)
+#define PINK RGB(255, 192, 203)
 #define BLACK RGB(0, 0, 0)
 
 #endif

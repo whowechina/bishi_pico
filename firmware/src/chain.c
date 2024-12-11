@@ -193,16 +193,13 @@ static void send_frame(uart_inst_t *uart, uint8_t cmd, uint8_t *data, int len)
 static void proc_sync(uint8_t *data)
 {
     uint8_t id = data[0];
-    uint8_t theme = data[1] % 2;
+    uint8_t theme = data[1];
     uint8_t rate = data[2];
 
     if ((id < 2) || (id > 4)) {
         return;
     }
 
-    if (theme >= 2) {
-        theme = 0;
-    }
     if (rate < 20) {
         rate = 80;
     }
