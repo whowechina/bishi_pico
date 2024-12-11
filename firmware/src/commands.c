@@ -148,6 +148,25 @@ static void handle_spin(int argc, char *argv[])
     printf(usage);
 }
 
+static void handle_theme(int argc, char *argv[])
+{
+    const char *usage = "Usage: theme <0|1|2>\n";
+    if (argc != 1) {
+        printf(usage);
+        return;
+    }
+
+    int theme = cli_extract_non_neg_int(argv[0], 0);
+    if ((theme < 0) || (theme > 2)) {
+        printf(usage);
+        return;
+    }
+
+    bishi_cfg->theme = theme;
+    config_changed();
+    printf("Theme set to %d.\n", theme);
+}
+
 static void handle_save()
 {
     save_request(true);
@@ -164,6 +183,7 @@ void commands_init()
     cli_register("display", handle_display, "Display all config.");
     cli_register("level", handle_level, "Set LED brightness level.");
     cli_register("spin", handle_spin, "Set spin rate.");
+    cli_register("theme", handle_theme, "Set theme.");
     cli_register("save", handle_save, "Save config to flash.");
     cli_register("factory", handle_factory_reset, "Reset everything to default.");
 }

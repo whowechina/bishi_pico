@@ -34,37 +34,80 @@
 #include "spin.h"
 #include "chain.h"
 
+typedef struct {
+    uint8_t h;
+    uint8_t s;
+    uint8_t v;
+} hsv_t;
+
 static struct {
-    uint32_t cab_off, cab_on;
-    uint32_t spin_off, spin_on;
-    uint32_t a_off, a_on;
-    uint32_t b_off, b_on;
-    uint32_t c_off, c_on;
+    hsv_t off[5];  /* CAB, SPIN, A, B, C */
+    hsv_t on[5];
 } light_theme[3][5] = {
     {
-        { 0 },
-        { RED, WHITE, GREEN, WHITE, RED, WHITE, BLACK, BLACK, BLUE, WHITE },
-        { GREEN, WHITE, GREEN, WHITE, RED, WHITE, BLACK, BLACK, BLUE, WHITE },
-        { BLUE, WHITE, GREEN, WHITE, RED, WHITE, BLACK, BLACK, BLUE, WHITE },
-        { YELLOW, WHITE, GREEN, WHITE, RED, WHITE, BLACK, BLACK, BLUE, WHITE },
+        { },
+        {
+            { { RED, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
+            { { RED, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
+        },
+        {
+            { { GREEN, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
+            { { GREEN, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
+        },
+        {
+            { { BLUE, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
+            { { BLUE, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
+        },
+        {
+            { { YELLOW, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
+            { { YELLOW, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
+        },
     },
     {
-        { 0 },
-        { RED, WHITE, YELLOW, WHITE, RED, WHITE, GREEN, WHITE, BLUE, WHITE },
-        { GREEN, WHITE, YELLOW, WHITE, RED, WHITE, GREEN, WHITE, BLUE, WHITE },
-        { BLUE, WHITE, YELLOW, WHITE, RED, WHITE, GREEN, WHITE, BLUE, WHITE },
-        { YELLOW, WHITE, YELLOW, WHITE, RED, WHITE, GREEN, WHITE, BLUE, WHITE },
+        { },
+        {
+            { { RED, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
+            { { RED, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },
+        },
+        {
+            { { GREEN, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
+            { { GREEN, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },       },
+        {
+            { { BLUE, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
+            { { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },
+        },
+        {
+            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+            { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+        },
     },
     {
-        { 0 },
-        { BLACK, BLACK, RED, WHITE, GREY, WHITE, GREY, WHITE, GREY, WHITE },
-        { BLACK, BLACK, BLACK, BLACK, GREY, WHITE, GREY, WHITE, GREY, WHITE },
-        { BLACK, BLACK, BLUE, WHITE, GREY, WHITE, GREY, WHITE, GREY, WHITE },
-        { BLACK, GREY, BLACK, GREY, BLACK, GREY, BLACK, GREY, BLACK, GREY },
-    }, 
+        { },
+        {
+            { { 0 }, { RED, 255, 200 }, { 0, 0, 128 }, { 0, 0, 128 }, { 0, 0, 128 }, },
+            { { 0 }, { RED, 255, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, },
+        },
+        {
+            { { 0 }, { 0 }, { 0, 0, 128 }, { 0, 0, 128 }, { 0, 0, 128 }, },
+            { { 0 }, { 0 }, { 0, 0, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, },
+        },
+        {
+            { { 0 }, { BLUE, 255, 200 }, { 0, 0, 128 }, { 0, 0, 128 }, { 0, 0, 128 }, },
+            { { 0 }, { BLUE, 255, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, },
+        },
+        {
+            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+            { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+        },
+    },
 };
 
 #define THEME_NUM count_of(light_theme)
+
+static uint32_t hsv2rgb(hsv_t hsv)
+{
+    return rgb32_from_hsv(hsv.h, hsv.s, hsv.v);
+}
 
 static void light_render()
 {
@@ -72,36 +115,35 @@ static void light_render()
     uint8_t theme = bishi_cfg->theme % THEME_NUM;
     uint8_t id = bishi_runtime.chain_id % 5;
 
-    light_theme[theme][0].cab_off = rgb32_from_hsv(51 * 0 + phase, 255, 128);
-    light_theme[theme][0].spin_off = rgb32_from_hsv(51 * 1 + phase, 255, 128);
-    light_theme[theme][0].a_off = rgb32_from_hsv(51 * 2 + phase, 255, 128);
-    light_theme[theme][0].b_off = rgb32_from_hsv(51 * 3 + phase, 255, 128);
-    light_theme[theme][0].c_off = rgb32_from_hsv(51 * 4 + phase, 255, 128);
-    light_theme[theme][0].cab_on = WHITE;
-    light_theme[theme][0].spin_on = WHITE;
-    light_theme[theme][0].a_on = WHITE;
-    light_theme[theme][0].b_on = WHITE;
-    light_theme[theme][0].c_on = WHITE;
+    for (int i = 0; i < 5; i++) {
+        light_theme[theme][0].off[i].h = 51 * i + phase;
+        light_theme[theme][0].on[i].h = 51 * i + phase;
+        light_theme[theme][0].off[i].s = 255;
+        light_theme[theme][0].on[i].s = 255;
+        light_theme[theme][0].off[i].v = 180;
+        light_theme[theme][0].on[i].v = 255;
+    }
 
-    light_set_cab(light_theme[theme][id].cab_off, false);
-    light_set_spinner(light_theme[theme][id].spin_off, false);
-    light_set_button(2, light_theme[theme][id].a_off, false);
-    light_set_button(1, light_theme[theme][id].b_off, false);
-    light_set_button(0, light_theme[theme][id].c_off, false);
+    typeof(light_theme[theme][id]) *my_theme = &light_theme[theme][id];
+
+    light_set_cab(hsv2rgb(my_theme->off[0]), false);
+    light_set_spinner(hsv2rgb(my_theme->off[1]), false);
+    light_set_button(2, hsv2rgb(my_theme->off[2]), false);
+    light_set_button(1, hsv2rgb(my_theme->off[3]), false);
+    light_set_button(0, hsv2rgb(my_theme->off[4]), false);
 
     uint16_t button = button_read();
     if (button & 0x01) {
-        light_set_spinner(light_theme[theme][id].spin_on, false);
+        light_set_spinner(hsv2rgb(my_theme->on[1]), false);
     }
-
     if (button & 0x02) {
-        light_set_button(2, light_theme[theme][id].a_on, false);
+        light_set_button(2, hsv2rgb(my_theme->on[2]), false);
     }
     if (button & 0x04) {
-        light_set_button(1, light_theme[theme][id].b_on, false);
+        light_set_button(1, hsv2rgb(my_theme->on[3]), false);
     }
     if (button & 0x08) {
-        light_set_button(0, light_theme[theme][id].c_on, false);
+        light_set_button(0, hsv2rgb(my_theme->on[4]), false);
     }
 }
 

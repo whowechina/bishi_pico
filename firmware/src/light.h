@@ -31,16 +31,15 @@ void light_set_cab(uint32_t color, bool hid);
 #define RGB(r, g, b) ((r << 16) | (g << 8) | b)
 #endif
 
-#define RED RGB(255, 0, 0)
-#define GREEN RGB(0, 255, 0)
-#define BLUE RGB(0, 0, 255)
-#define YELLOW RGB(255, 255, 0)
-#define CYAN RGB(0, 255, 255)
-#define MAGENTA RGB(255, 0, 255)
-#define WHITE RGB(255, 255, 255)
-#define GREY RGB(128, 128, 128)
-#define ORANGE RGB(255, 165, 0)
-#define PINK RGB(255, 192, 203)
-#define BLACK RGB(0, 0, 0)
+#define RED 0
+#define GREEN 85
+#define BLUE 170
+#define YELLOW 42
+#define CYAN 127
+#define MAGENTA 212
+#define ORANGE 21
+#define PINK 234
+#define PURPLE 191
+#define LIME 64
 
 #endif

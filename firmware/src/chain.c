@@ -23,7 +23,7 @@
 #include "config.h"
 #include "board_defs.h"
 
-#define SYNC_INTERVAL_US 200000
+#define SYNC_INTERVAL_US 100000
 #define SYNC_EXPIRE_TIME_US 1000000
 
 /*
@@ -44,8 +44,8 @@
         The first BUTTON/SPIN pair is "my" report, the latter are from "my children".
 
     * 0xF1: Sync downward
-        0xFF 0xF1 0x03 [Your ID] [Theme] [Spin Rate] [CS]
-                         (1B)      (1B)     (1B)     (1B)
+        0xFF 0xF1 0x03 [Your ID] [Theme] [level] [Spin Rate] [CS]
+                         (1B)      (1B)   (1B)      (1B)     (1B)
         Master's ID is always 1, the children are 2, 3, 4.
         Each forwarding increases the ID by 1, and stops at 3.
 
@@ -194,7 +194,8 @@ static void proc_sync(uint8_t *data)
 {
     uint8_t id = data[0];
     uint8_t theme = data[1];
-    uint8_t rate = data[2];
+    uint8_t level = data[2];
+    uint8_t rate = data[3];
 
     if ((id < 2) || (id > 4)) {
         return;
@@ -210,6 +211,10 @@ static void proc_sync(uint8_t *data)
         bishi_cfg->theme = theme;
         config_changed();
     }
+    if (bishi_cfg->light.level != level) {
+        bishi_cfg->light.level = level;
+        config_changed();
+    }
     if (bishi_cfg->spin.units_per_turn != rate) {
         bishi_cfg->spin.units_per_turn = rate;
         config_changed();
@@ -217,7 +222,7 @@ static void proc_sync(uint8_t *data)
 
     if (id < 4) {
         data[0] = id + 1;
-        send_frame(UART_DOWN, CHAIN_CMD_SYNC, data, 2);
+        send_frame(UART_DOWN, CHAIN_CMD_SYNC, data, 3);
     }
 }
 
@@ -294,7 +299,8 @@ static void being_master()
     static uint64_t next_sync = 0;
     uint64_t now = time_us_64();
     if (now >= next_sync) {
-        uint8_t data[] = { 2, bishi_cfg->theme, bishi_cfg->spin.units_per_turn };
+        uint8_t data[] = { 2, bishi_cfg->theme, bishi_cfg->light.level,
+                              bishi_cfg->spin.units_per_turn };
         send_frame(UART_DOWN, CHAIN_CMD_SYNC, data, sizeof(data));
         next_sync = now + SYNC_INTERVAL_US;
     }
