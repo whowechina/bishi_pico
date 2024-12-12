@@ -23,6 +23,7 @@ typedef struct __attribute__((packed)) {
         uint8_t level;
     } light;
     uint8_t theme;
+    uint32_t sn;
 } bishi_cfg_t;
 
 typedef struct {

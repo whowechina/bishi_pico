@@ -290,6 +290,8 @@ void init()
     mutex_init(&core1_io_lock);
     save_init(0xca44caac, &core1_io_lock);
 
+    usb_descriptors_set_sn(bishi_cfg->sn);
+
     light_init();
     button_init();
     spin_init();

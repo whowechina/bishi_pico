@@ -9,6 +9,8 @@ enum {
     REPORT_ID_LIGHTS,
 };
 
+void usb_descriptors_set_sn(uint64_t sn);
+
 // because they are missing from tusb_hid.h
 #define HID_STRING_INDEX(x) HID_REPORT_ITEM(x, 7, RI_TYPE_LOCAL, 1)
 #define HID_STRING_INDEX_N(x, n) HID_REPORT_ITEM(x, 7, RI_TYPE_LOCAL, n)

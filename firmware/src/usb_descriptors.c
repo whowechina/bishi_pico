@@ -116,7 +116,12 @@ uint8_t const* tud_descriptor_configuration_cb(uint8_t index) {
 //--------------------------------------------------------------------+
 // String Descriptors
 //--------------------------------------------------------------------+
-static char serial_number_str[24] = "123456\0";
+static char serial_number_str[24] = "\0";
+
+void usb_descriptors_set_sn(uint64_t sn)
+{
+    sprintf(serial_number_str, "%16llx", sn);
+}
 
 static const char *string_desc_arr[] = {
     (const char[]){0x09, 0x04},  // 0: is supported language is English (0x0409)
@@ -200,10 +205,10 @@ uint16_t const* tud_descriptor_string_cb(uint8_t index, uint16_t langid)
         return _desc_str;
     }
 
-    if (index == 3) {
+    if ((index == 3) && (serial_number_str[0] == '\0')) {
         pico_unique_board_id_t board_id;
         pico_get_unique_board_id(&board_id);
-        sprintf(serial_number_str, "%016llx", *(uint64_t *)&board_id);
+        sprintf(serial_number_str, "%16llx", *(uint64_t *)&board_id);
     }
 
     const char *str = string_desc_arr[index];

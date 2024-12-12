@@ -19,6 +19,7 @@ static bishi_cfg_t default_cfg = {
     .light = {
         .level = 128,
     },
+    .sn = 0,
 };
 
 bishi_runtime_t bishi_runtime;
@@ -27,6 +28,10 @@ static void config_loaded()
 {
     if (bishi_cfg->spin.units_per_turn < 20) {
         bishi_cfg->spin.units_per_turn = 80;
+        config_changed();
+    }
+    if (bishi_cfg->sn == 0) {
+        bishi_cfg->sn = board_id_32();
         config_changed();
     }
 }
