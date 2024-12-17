@@ -70,8 +70,8 @@ You may need to build 2 to 4 controllers for a pary. For each controller:
 * 3x MX-compatible switch, I personally use Gateron POM CJ BOX.
 * Optional: 6x ESD diodes, SOD-323, 3.3V bidirectional.
 * This is how it looks after soldering.  
-  <img src="doc/pcb_solder_1.jpg" width="90%">  
-  <img src="doc/pcb_solder_2.jpg" width="90%">
+  <img src="doc/pcb_solder_1.jpg" width="70%">  
+  <img src="doc/pcb_solder_2.jpg" width="70%">
 * Becareful of 2 pin holes. It's a common oversight to either forget to solder them or to leave air bubbles during the process. To avoid this, solder slowly from one side of the hole, using minimal solder wire and a generous amount of flux.  
   <img src="doc/pcb_solder_usb_txrx.jpg" width="60%">
 
@@ -85,7 +85,7 @@ You may need to build 2 to 4 controllers for a pary. For each controller:
 
 ### Sensor PCB Separation
 * If everthing works fine, you can cut off (or even bend and snap) the small sensor board from the main board.  
-  <img src="doc/pcb_cut.jpg" width="80%">
+  <img src="doc/pcb_cut.jpg" width="70%">
 
 ### 3D Printing
 #### Printing parameters  
@@ -102,7 +102,7 @@ You may need to build 2 to 4 controllers for a pary. For each controller:
 * Magnet Seat: `Production\3DPrint\bishi_mag_seat.stl`, clear transparent, choose the one matches your magnet size.
 * Lever: `Production\3DPrint\bishi_lever.stl`, clear transparent.
 * Plase pay attention to the orientation of the parts.  
-<img src="doc/spinner_orientation.jpg" width="80%">
+<img src="doc/spinner_orientation.jpg" width="70%">
 
 #### Housing Parts
 * Base: `Production\3DPrint\bishi_base.stl`, gray, if you have multi-filament system, use special support material for nicer screw hole surface.
@@ -135,16 +135,16 @@ You may need to build 2 to 4 controllers for a pary. For each controller:
 
 #### Steps
 1. We'll make 3 dome buttons first. Just glue the shorter half of the clear plastic ball onto the button seat use the glue mentioned earlier.
-   <img src="doc/button_cap.jpg" width="80%">
+   <img src="doc/button_cap.jpg" width="70%">
   
 2. Now the spinner part. Insert the bearing into the bearing fixer while keeping the components warm. You can use a hair dryer to heat them up a little. Then screw the lever and the bearing fixer together using M2 screws. Then screw the keycap to the bearing using the M2.5 screw and the magnet seat. Screw very very slowly so it won't heat up and break the 3D printed parts. Put the magnet into the magnet seat and fix it with tape. Lastly put in the shaft steel into the lever. You may also look at the Musec Pico (https://github.com/whowechina/musec_pico) for spinner assembly.
-   <img src="doc/assembled_spinner.jpg" width="80%">
+   <img src="doc/assembled_spinner.jpg" width="70%">
 
 3. Connect the SH1.0 cable to the sensor PCB. And mount the PCB and the lever to the base. A pair of plastic washer will be helpful to prevent the lever from moving. They can also be used to adjust the lever position, compensating for the printing tolerance.  
-   <img src="doc/assembled_1.jpg" width="80%">
+   <img src="doc/assembled_1.jpg" width="70%">
 
 4. Connect the other side of the SH1.0 cable to the mainboard and put all 3 dome buttons and the support part on. We're almost there. Connect to a PC and do a final test before we screw the panel.    
-   <img src="doc/assembled_2.jpg" width="80%">
+   <img src="doc/assembled_2.jpg" width="70%">
 
 5. Install the panel using M3 screws. Put anti-slip pads on the bottom, right on top of the screws.
 

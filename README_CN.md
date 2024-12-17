@@ -1,7 +1,7 @@
 # Bishi Pico - 拍打乐风格的迷你控制器
 [Click here for the English version of this guide.](README.md)
 
-<img src="doc/main.jpg" width="80%">
+<img src="doc/main.jpg" width="70%">
 
 ## 特性
 * 它很小，但尽量还原街机控制器的感觉。
@@ -70,8 +70,8 @@ https://discord.gg/M8f2PPQFEA
 * 可选：6x ESD 二极管, SOD-323 封装, 3.3V 双向。
 
 * 焊接完成后的效果。  
-  <img src="doc/pcb_solder_1.jpg" width="90%">  
-  <img src="doc/pcb_solder_2.jpg" width="90%">
+  <img src="doc/pcb_solder_1.jpg" width="70%">  
+  <img src="doc/pcb_solder_2.jpg" width="70%">
 * 注意这两个引脚的焊接，很容易疏忽，要么忘记焊，要么在过程中留下气泡。为了避免这种情况，从孔的一侧开始慢慢焊接，要用尽量少的焊丝和较多的助焊剂。  
   <img src="doc/pcb_solder_usb_txrx.jpg" width="60%">
 
@@ -85,7 +85,7 @@ https://discord.gg/M8f2PPQFEA
 
 ### 传感器 PCB 分离
 * 如果一切正常，你可以把小传感器板从主板上切下来（甚至直接掰下来）。
-  <img src="doc/pcb_cut.jpg" width="80%">
+  <img src="doc/pcb_cut.jpg" width="70%">
 
 ### 3D 打印
 #### 打印参数  
@@ -102,7 +102,7 @@ https://discord.gg/M8f2PPQFEA
 * 磁铁座: `Production\3DPrint\bishi_mag_seat.stl`, 透明。
 * 平衡杆: `Production\3DPrint\bishi_lever.stl`, 透明。
 * 请注意打印的时候的摆放朝向。  
-<img src="doc/spinner_orientation.jpg" width="80%">
+<img src="doc/spinner_orientation.jpg" width="70%">
 
 #### 外壳部分
 * 基座: `Production\3DPrint\bishi_base.stl`, 灰色，如果你有多色打印系统，使用特殊支撑材料以获得更好的螺丝孔表面。
@@ -135,18 +135,17 @@ https://discord.gg/M8f2PPQFEA
 
 #### 步骤
 1. 我们先做 3 个圆形按钮。先把透明塑料小球的矮半边用之前提到的胶水粘到按钮座上。  
-   <img src="doc/button_cap.jpg" width="80%">
+   <img src="doc/button_cap.jpg" width="70%">
 2. 然后是转盘部分。把轴承插入轴承固定器，注意让打印件暖和一点。你可以用吹风机稍微加热一下。然后用 M2 螺丝把平衡杆和轴承固定器固定在一起。然后用 M2.5 螺丝把磁铁座和键帽固定到轴承上。要拧的非常慢，以免发热弄坏 3D 打印部件。把磁铁放到磁铁座里，用胶带固定。最后把钢轴插入平衡杆。你也可以参考 Musec Pico (https://github.com/whowechina/musec_pico) 的转盘组装部分。
-   <img src="doc/assembled_spinner.jpg" width="80%">
+   <img src="doc/assembled_spinner.jpg" width="70%">
 
 3. 把 SH1.0 排线连接到传感器 PCB 上。然后把 PCB 和平衡杆装到底座上。用两个塑料垫片可以防止平衡杆移动。它们也可以用来调整平衡杆的位置，补偿打印公差。  
-   <img src="doc/assembled_1.jpg" width="80%">
+   <img src="doc/assembled_1.jpg" width="70%">
 
 4. 把 SH1.0 排线的另一端连接到主板上，然后把 3 个圆形按钮和支撑部件装上。我们快要完成了。连接到 PC 上做最后的测试。  
-   <img src="doc/assembled_2.jpg" width="80%">
+   <img src="doc/assembled_2.jpg" width="70%">
 
 5. 用 M3 按钮把面板装上，最后在底部装上硅胶防滑垫。  
-   <img src="doc/assembled_3.jpg" width="80%">
 
 #### 注意事项
 * 每台 3D 打印机和打印材料都有自己的公差。如果你发现按钮上的十字孔太紧，可以用针或刀片稍微扩大一下。
