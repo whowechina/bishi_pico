@@ -45,7 +45,7 @@ You can check out my other cool projects.
 * Bishi Pico: https://github.com/whowechina/bishi_pico
 
 ## **Disclaimer** ##
-I made this project in my personal time. I will continue to improve the project. I have done my best to ensure that everything is accurate and functional, there's always a chance that mistakes may occur. I cannot be held responsible for any loss of your time or money that may result from using this open source project. Thank you for your understanding.
+I made this project in my personal time without any sponsorship. I will continue to improve the project. I have done my best to ensure that everything is accurate and functional, there's always a chance that mistakes may occur. I cannot be held responsible for any loss of your time or money that may result from using this open source project. Thank you for your understanding.
 
 ## HOW TO BUILD
 ### PCB and Components
@@ -134,16 +134,16 @@ You may need to build 2 to 4 controllers for a pary. For each controller:
   https://www.amazon.com/Bclla-Zkenshan-washers-Shock-Proof-Leak-Proof-Insulation/dp/B091Y7H9NX/
 
 #### Steps
-1. We'll make 3 dome buttons first. Just glue the shorter half of the clear plastic ball onto the button seat use the glue mentioned earlier.
+1. We'll make 3 dome buttons first. Just glue the shorter half of the clear plastic ball onto the button seat use the glue mentioned earlier.  
    <img src="doc/button_cap.jpg" width="70%">
   
-2. Now the spinner part. Insert the bearing into the bearing fixer while keeping the components warm. You can use a hair dryer to heat them up a little. Then screw the lever and the bearing fixer together using M2 screws. Then screw the keycap to the bearing using the M2.5 screw and the magnet seat. Screw very very slowly so it won't heat up and break the 3D printed parts. Put the magnet into the magnet seat and fix it with tape. Lastly put in the shaft steel into the lever. You may also look at the Musec Pico (https://github.com/whowechina/musec_pico) for spinner assembly.
+2. Now the spinner part. Insert the bearing into the bearing fixer while keeping the components warm. You can use a hair dryer to heat them up a little. Then screw the lever and the bearing fixer together using M2 screws. Then screw the keycap to the bearing using the M2.5 screw and the magnet seat. Screw very very slowly so it won't heat up and break the 3D printed parts. Put the magnet into the magnet seat and fix it with tape. Lastly put in the shaft steel into the lever. You may also look at the Musec Pico (https://github.com/whowechina/musec_pico) for spinner assembly.  
    <img src="doc/assembled_spinner.jpg" width="70%">
 
 3. Connect the SH1.0 cable to the sensor PCB. And mount the PCB and the lever to the base. A pair of plastic washer will be helpful to prevent the lever from moving. They can also be used to adjust the lever position, compensating for the printing tolerance.  
    <img src="doc/assembled_1.jpg" width="70%">
 
-4. Connect the other side of the SH1.0 cable to the mainboard and put all 3 dome buttons and the support part on. We're almost there. Connect to a PC and do a final test before we screw the panel.    
+4. Connect the other side of the SH1.0 cable to the mainboard and put all 3 dome buttons and the support part on. We're almost there. Connect to a PC and do a final test before we screw the panel.  
    <img src="doc/assembled_2.jpg" width="70%">
 
 5. Install the panel using M3 screws. Put anti-slip pads on the bottom, right on top of the screws.
