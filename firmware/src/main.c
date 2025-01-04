@@ -221,11 +221,8 @@ static void core0_loop()
         chain_update();
         hid_update();
 
-        uint64_t now = time_us_64();
-        if (now < next_frame) {
-            sleep_us(next_frame - now - 1);
-        }
-        next_frame += 1000000 / LOOP_HZ;
+        sleep_until(next_frame);
+        next_frame += 1001;
     }
 }
 
