@@ -150,14 +150,14 @@ static void handle_spin(int argc, char *argv[])
 
 static void handle_theme(int argc, char *argv[])
 {
-    const char *usage = "Usage: theme <0|1|2>\n";
+    const char *usage = "Usage: theme <0|1|2|3|4>\n";
     if (argc != 1) {
         printf(usage);
         return;
     }
 
     int theme = cli_extract_non_neg_int(argv[0], 0);
-    if ((theme < 0) || (theme > 2)) {
+    if ((theme < 0) || (theme > 4)) {
         printf(usage);
         return;
     }

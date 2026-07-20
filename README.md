@@ -7,7 +7,7 @@ Features:
 * It's small but closely replicates the feel of the arcade controller.
 * Can be daisy-chained up to 4 controllers.
 * Full HID light support.
-* 3 color themes for the old Bishi Bashi title, the new Bishi Bashi Channel and the Love Live After School Activity.
+* 5 color themes for the old Bishi Bashi title, the new Bishi Bashi Channel, the Love Live After School Activity, Live Sports and Sega Naomi mini games theme.
 * Command line for configurations.
 * All source files open.
 
@@ -163,7 +163,13 @@ You may need to build 2 to 4 controllers for a pary. For each controller:
 * It's very simple. Just plug it in and play.
 * The top type-C port is for USB connection. The left one is for daisy-chaining uplink, the right one is for daisy-chaining downlink.
 * When in the daisy-chain, each controller will identify itself and change its cab color correspondingly. The first one that connects to the PC is the master (P1).
-* Connect USB while pressing the spinner enters Bishi Bashi Channel theme; connect USB while pressing the middle button enters the old Bishi Bashi theme; connect USB while pressing the left and right buttons enters the Love Live theme.
+* Connect USB while pressing buttons to enter certain game theme.
+  * Spinner: Bishi Bashi Channel theme;
+  * Middle button: the old Bishi Bashi theme;
+  * Left + Right buttons: Love Live theme;
+  * Right button: Live Sports theme;
+  * Left button: Sega Naomi mini games theme;
+
 * You can set spin sensivity by "spin rate" command.
 * You can set spin direction by "spin <normal|reverse>" command.
 * You can set the LED brightness by "level" command.

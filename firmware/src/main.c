@@ -43,8 +43,8 @@ typedef struct {
 static struct {
     hsv_t off[5];  /* CAB, SPIN, A, B, C */
     hsv_t on[5];
-} light_theme[3][5] = {
-    {
+} light_theme[][5] = {
+    { // Bishi Bashi Channel
         { },
         {
             { { RED, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
@@ -63,7 +63,7 @@ static struct {
             { { YELLOW, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
         },
     },
-    {
+    { // Old Bishi Bashi
         { },
         {
             { { RED, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
@@ -71,7 +71,8 @@ static struct {
         },
         {
             { { GREEN, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
-            { { GREEN, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },       },
+            { { GREEN, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },
+        },
         {
             { { BLUE, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
             { { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },
@@ -81,7 +82,7 @@ static struct {
             { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
         },
     },
-    {
+    { // Love Live
         { },
         {
             { { 0 }, { RED, 255, 200 }, { 0, 0, 128 }, { 0, 0, 128 }, { 0, 0, 128 }, },
@@ -98,6 +99,44 @@ static struct {
         {
             { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
             { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+        },
+    },
+    {  // Live Sports
+        { },
+        {
+            { { RED, 255, 255 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, { 0 }, { RED, 255, 128 }, },
+            { { RED, 255, 255 }, { GREEN, 0, 255 }, { BLUE, 0, 255 }, { 0, 0, 10 }, { RED, 0, 255 }, },
+        },
+        {
+            { { BLUE, 255, 255 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, { 0 }, { RED, 255, 128 }, },
+            { { BLUE, 255, 255 }, { GREEN, 0, 255 }, { BLUE, 0, 255 }, { 0, 0, 10 }, { RED, 0, 255 }, },
+        },
+        {
+            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+            { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+        },
+        {
+            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+            { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+        },
+    },
+    {  // Sega Naomi Mini Game
+        { },
+        {
+            { { RED, 255, 255 }, { 0 }, { BLUE, 255, 128 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, },
+            { { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, },
+        },
+        {
+            { { GREEN, 255, 255 }, { 0 }, { BLUE, 255, 128 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, },
+            { { GREEN, 255, 255 }, { 0 }, { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, },
+        },
+        {
+            { { BLUE, 255, 255 }, { 0 }, { BLUE, 255, 128 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, },
+            { { BLUE, 255, 255 }, { 0 }, { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, },
+        },
+        {
+            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
         },
     },
 };
@@ -254,14 +293,20 @@ static void theme_check()
 {
     uint16_t button = button_read();
     switch (button) {
-        case 0x01:
+        case 0x01: // Bishi Bashi Channel
             bishi_cfg->theme = 0;
             break;
-        case 0x04:
+        case 0x04: // Old Bishi Bashi
             bishi_cfg->theme = 1;
             break;
-        case 0x0a:
+        case 0x0a: // Love Live
             bishi_cfg->theme = 2;
+            break;
+        case 0x08: // Live Sports
+            bishi_cfg->theme = 3;
+            break;
+        case 0x02: // Sega Naomi Mini Game
+            bishi_cfg->theme = 4;
             break;
         default:
             bishi_cfg->theme = 0;

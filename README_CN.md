@@ -7,7 +7,7 @@
 * 它很小，但尽量还原街机控制器的感觉。
 * 可以最多四台级联。
 * 完整的 HID 灯光支持。
-* 三种颜色主题，分别是旧版拍打乐，新版拍打乐频道和 Love Live 学园活动。
+* 五种颜色主题，分别是旧版拍打乐，新版拍打乐频道，Love Live 学园活动，Live Sports 及 Sega Naomi 迷你游戏主题。
 * 命令行配置。
 * 所有源文件开放。
 
@@ -162,7 +162,12 @@ https://discord.gg/M8f2PPQFEA
 * 非常简单。只要插上电源就可以玩了。
 * 顶部的 Type-C 接口是用于 USB 连接的。左边的是级联上行，右边的是级联下行。
 * 当级联时，每个控制器都会识别自己并相应地改变中框颜色。第一台连接到 PC 的控制器是主控制器（P1）。
-* 按住转盘并插入 USB 进入 Bishi Bashi Channel 主题；按住中间按钮并插入 USB 进入旧版 Bishi Bashi 主题；按住左右按钮并插入 USB 进入 Love Live 主题。
+* 插入 USB 时按住对应的键来进入某个游戏主题。
+  * 转盘：Bishi Bashi Channel 主题；
+  * 中间按钮：旧版 Bishi Bashi 主题；
+  * 左+右按钮：Love Live 主题；
+  * 右按钮：Live Sports 主题；
+  * 左按钮：Sega Naomi 迷你游戏主题；
 * 你可以通过 "spin rate" 命令设置转盘灵敏度。
 * 你可以通过 "spin <normal|reverse>" 命令设置转盘方向。
 * 你可以通过 "level" 命令设置 LED 亮度。
