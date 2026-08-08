@@ -7,7 +7,7 @@
  */
 
 #include "config.h"
-#include "save.h"
+#include "savedata.h"
 
 bishi_cfg_t *bishi_cfg;
 
@@ -31,23 +31,23 @@ static void config_loaded()
         config_changed();
     }
     if (bishi_cfg->sn == 0) {
-        bishi_cfg->sn = board_id_32();
+        bishi_cfg->sn = savedata_id_32();
         config_changed();
     }
 }
 
 void config_changed()
 {
-    save_request(false);
+    savedata_save(false);
 }
 
 void config_factory_reset()
 {
     *bishi_cfg = default_cfg;
-    save_request(true);
+    savedata_save(true);
 }
 
 void config_init()
 {
-    bishi_cfg = (bishi_cfg_t *)save_alloc(sizeof(*bishi_cfg), &default_cfg, config_loaded);
+    bishi_cfg = (bishi_cfg_t *)savedata_alloc(sizeof(*bishi_cfg), &default_cfg, config_loaded);
 }
