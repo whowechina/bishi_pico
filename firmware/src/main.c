@@ -40,108 +40,195 @@ typedef struct {
     uint8_t v;
 } hsv_t;
 
-static struct {
+typedef struct {
     hsv_t off[5];  /* CAB, SPIN, A, B, C */
     hsv_t on[5];
-} light_theme[][5] = {
-    { // Bishi Bashi Channel
-        { },
+} theme_pattern_t;
+
+static struct {
+    const char *name;
+    uint8_t keybind;
+    theme_pattern_t lights[6];
+} light_theme[] = {
+    {
+        "Bishi Bashi Channel",
+        0x01,
         {
-            { { RED, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
-            { { RED, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
-        },
-        {
-            { { GREEN, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
-            { { GREEN, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
-        },
-        {
-            { { BLUE, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
-            { { BLUE, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
-        },
-        {
-            { { YELLOW, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
-            { { YELLOW, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
-        },
-    },
-    { // Old Bishi Bashi
-        { },
-        {
-            { { RED, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
-            { { RED, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },
-        },
-        {
-            { { GREEN, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
-            { { GREEN, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },
-        },
-        {
-            { { BLUE, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
-            { { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },
-        },
-        {
-            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
-            { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+            { },
+            {
+                { { RED, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
+                { { RED, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
+            },
+            {
+                { { GREEN, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
+                { { GREEN, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
+            },
+            {
+                { { BLUE, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
+                { { BLUE, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
+            },
+            {
+                { { YELLOW, 255, 255 }, { GREEN, 255, 80 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
+                { { YELLOW, 255, 255 }, { GREEN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
+            },
         },
     },
-    { // Love Live
-        { },
+    {
+        "Old Bishi Bashi",
+        0x04,
         {
-            { { 0 }, { RED, 255, 200 }, { 0, 0, 128 }, { 0, 0, 128 }, { 0, 0, 128 }, },
-            { { 0 }, { RED, 255, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, },
-        },
-        {
-            { { 0 }, { 0 }, { 0, 0, 128 }, { 0, 0, 128 }, { 0, 0, 128 }, },
-            { { 0 }, { 0 }, { 0, 0, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, },
-        },
-        {
-            { { 0 }, { BLUE, 255, 200 }, { 0, 0, 128 }, { 0, 0, 128 }, { 0, 0, 128 }, },
-            { { 0 }, { BLUE, 255, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, },
-        },
-        {
-            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
-            { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
-        },
-    },
-    {  // Live Sports
-        { },
-        {
-            { { RED, 255, 255 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, { 0 }, { RED, 255, 128 }, },
-            { { RED, 255, 255 }, { GREEN, 0, 255 }, { BLUE, 0, 255 }, { 0, 0, 10 }, { RED, 0, 255 }, },
-        },
-        {
-            { { BLUE, 255, 255 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, { 0 }, { RED, 255, 128 }, },
-            { { BLUE, 255, 255 }, { GREEN, 0, 255 }, { BLUE, 0, 255 }, { 0, 0, 10 }, { RED, 0, 255 }, },
-        },
-        {
-            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
-            { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
-        },
-        {
-            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
-            { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+            { },
+            {
+                { { RED, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
+                { { RED, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },
+            },
+            {
+                { { GREEN, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
+                { { GREEN, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },
+            },
+            {
+                { { BLUE, 255, 255 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, },
+                { { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, { GREEN, 255, 255 }, { BLUE, 255, 255 }, },
+            },
+            {
+                { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+                { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+            },
         },
     },
-    {  // Sega Naomi Mini Game
-        { },
+    {
+        "Love Live",
+        0x0a,
         {
-            { { RED, 255, 255 }, { 0 }, { BLUE, 255, 128 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, },
-            { { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, },
+            { },
+            {
+                { { 0 }, { RED, 255, 200 }, { 0, 0, 128 }, { 0, 0, 128 }, { 0, 0, 128 }, },
+                { { 0 }, { RED, 255, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, },
+            },
+            {
+                { { 0 }, { 0 }, { 0, 0, 128 }, { 0, 0, 128 }, { 0, 0, 128 }, },
+                { { 0 }, { 0 }, { 0, 0, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, },
+            },
+            {
+                { { 0 }, { BLUE, 255, 200 }, { 0, 0, 128 }, { 0, 0, 128 }, { 0, 0, 128 }, },
+                { { 0 }, { BLUE, 255, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, { 0, 0, 255 }, },
+            },
+            {
+                { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+                { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+            },
         },
+    },
+    {
+        "Live Sports",
+        0x08,
         {
-            { { GREEN, 255, 255 }, { 0 }, { BLUE, 255, 128 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, },
-            { { GREEN, 255, 255 }, { 0 }, { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, },
+            { },
+            {
+                { { RED, 255, 255 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, { 0 }, { RED, 255, 128 }, },
+                { { RED, 255, 255 }, { GREEN, 0, 255 }, { BLUE, 0, 255 }, { 0, 0, 10 }, { RED, 0, 255 }, },
+            },
+            {
+                { { BLUE, 255, 255 }, { GREEN, 255, 128 }, { BLUE, 255, 128 }, { 0 }, { RED, 255, 128 }, },
+                { { BLUE, 255, 255 }, { GREEN, 0, 255 }, { BLUE, 0, 255 }, { 0, 0, 10 }, { RED, 0, 255 }, },
+            },
+            {
+                { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+                { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+            },
+            {
+                { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+                { { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, { 0, 0, 10 }, },
+            },
         },
+    },
+    {
+        "Sega Naomi Mini Game",
+        0x02,
         {
-            { { BLUE, 255, 255 }, { 0 }, { BLUE, 255, 128 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, },
-            { { BLUE, 255, 255 }, { 0 }, { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, },
+            { },
+            {
+                { { RED, 255, 255 }, { 0 }, { BLUE, 255, 128 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, },
+                { { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, },
+            },
+            {
+                { { GREEN, 255, 255 }, { 0 }, { BLUE, 255, 128 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, },
+                { { GREEN, 255, 255 }, { 0 }, { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, },
+            },
+            {
+                { { BLUE, 255, 255 }, { 0 }, { BLUE, 255, 128 }, { YELLOW, 255, 128 }, { RED, 255, 128 }, },
+                { { BLUE, 255, 255 }, { 0 }, { BLUE, 255, 255 }, { YELLOW, 255, 255 }, { RED, 255, 255 }, },
+            },
+            {
+                { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+                { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+            },
         },
+    },
+    {
+        "Come on Baby",
+        0x06,
         {
-            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
-            { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+            { },
+            {
+                { { YELLOW, 255, 255 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
+                { { YELLOW, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
+            },
+            {
+                { { CYAN, 255, 255 }, { RED, 255, 128 }, { 0 }, { BLUE, 255, 128 }, },
+                { { CYAN, 255, 255 }, { RED, 255, 255 }, { 0 }, { BLUE, 255, 255 }, },
+            },
+            {
+                { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+                { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+            },
+            {
+                { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+                { { 0 }, { 0 }, { 0 }, { 0 }, { 0 }, },
+            },
         },
     },
 };
 
 #define THEME_NUM count_of(light_theme)
+
+static void print_keybind(uint8_t keybind)
+{
+    static const struct {
+        uint8_t mask;
+        const char *name;
+    } keys[] = {
+        { 0x01, "SPIN" },
+        { 0x02, "A" },
+        { 0x04, "B" },
+        { 0x08, "C" },
+    };
+
+    bool first = true;
+    for (uint8_t i = 0; i < count_of(keys); i++) {
+        if (keybind & keys[i].mask) {
+            if (!first) {
+                printf("+");
+            }
+            printf("%s", keys[i].name);
+            first = false;
+        }
+    }
+
+    if (first) {
+        printf("NONE");
+    }
+}
+
+void theme_list_print(void)
+{
+    printf("[Themes]\n");
+    for (uint8_t i = 0; i < THEME_NUM; i++) {
+        printf("  %u: %s (boot key: ", i, light_theme[i].name);
+        print_keybind(light_theme[i].keybind);
+        printf(")\n");
+    }
+}
 
 static uint32_t hsv2rgb(hsv_t hsv)
 {
@@ -155,15 +242,15 @@ static void light_render()
     uint8_t id = bishi_runtime.chain_id % 5;
 
     for (int i = 0; i < 5; i++) {
-        light_theme[theme][0].off[i].h = 51 * i + phase;
-        light_theme[theme][0].on[i].h = 51 * i + phase;
-        light_theme[theme][0].off[i].s = 255;
-        light_theme[theme][0].on[i].s = 255;
-        light_theme[theme][0].off[i].v = 180;
-        light_theme[theme][0].on[i].v = 255;
+        light_theme[theme].lights[0].off[i].h = 51 * i + phase;
+        light_theme[theme].lights[0].on[i].h = 51 * i + phase;
+        light_theme[theme].lights[0].off[i].s = 255;
+        light_theme[theme].lights[0].on[i].s = 255;
+        light_theme[theme].lights[0].off[i].v = 180;
+        light_theme[theme].lights[0].on[i].v = 255;
     }
 
-    typeof(light_theme[theme][id]) *my_theme = &light_theme[theme][id];
+    theme_pattern_t *my_theme = &light_theme[theme].lights[id];
 
     light_set_cab(hsv2rgb(my_theme->off[0]), false);
     light_set_spinner(hsv2rgb(my_theme->off[1]), false);
@@ -294,27 +381,15 @@ static void update_check()
 static void theme_check()
 {
     uint16_t button = button_read();
-    switch (button) {
-        case 0x01: // Bishi Bashi Channel
-            bishi_cfg->theme = 0;
-            break;
-        case 0x04: // Old Bishi Bashi
-            bishi_cfg->theme = 1;
-            break;
-        case 0x0a: // Love Live
-            bishi_cfg->theme = 2;
-            break;
-        case 0x08: // Live Sports
-            bishi_cfg->theme = 3;
-            break;
-        case 0x02: // Sega Naomi Mini Game
-            bishi_cfg->theme = 4;
-            break;
-        default:
-            bishi_cfg->theme = 0;
-            break;
+    for (uint8_t i = 0; i < THEME_NUM; i++) {
+        if (light_theme[i].keybind == button) {
+            bishi_cfg->theme = i;
+            config_changed();
+            return;
+        }
     }
 
+    bishi_cfg->theme = 0;
     config_changed();
 }
 
