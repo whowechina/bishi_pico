@@ -151,7 +151,7 @@ static void handle_spin(int argc, char *argv[])
 
 static void handle_theme(int argc, char *argv[])
 {
-    const char *usage = "Usage: theme [<0|1|2|3|4|5>]\n";
+    const char *usage = "Usage: theme [0..6]\n";
     if (argc == 0) {
         theme_list_print();
         return;
@@ -163,7 +163,7 @@ static void handle_theme(int argc, char *argv[])
     }
 
     int theme = cli_extract_non_neg_int(argv[0], 0);
-    if ((theme < 0) || (theme > 5)) {
+    if ((theme < 0) || (theme > 6)) {
         printf(usage);
         return;
     }
