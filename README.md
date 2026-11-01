@@ -107,7 +107,7 @@ You may need to build 2 to 4 controllers for a pary. For each controller:
 #### Housing Parts
 * Base: `Production\3DPrint\bishi_base.stl`, gray, if you have multi-filament system, use special support material for nicer screw hole surface.
 * Middle Support: `Production\3DPrint\bishi_support.stl`, clear transparent.
-* Panel: `Production\3DPrint\bishi_panel.3mf`, gray, print up-side-down. If you have multi-filament system, print the logo and lines in black.
+* Panel: `Production\3DPrint\bishi_panel.3mf` (use the `_insert` version if you plan to use heatset inserts), gray, print up-side-down. If you have multi-filament system, print the logo and lines in black.
 
 #### 3x Button Seats
 * Button Seat: `Production\3DPrint\bishi_button_seat.stl`, white, print upside down.
@@ -118,7 +118,8 @@ You may need to build 2 to 4 controllers for a pary. For each controller:
   https://www.amazon.com/Plastic-Fillable-Ornaments-Acrylic-Christmas/dp/B09ZTSGL28/
 * 1x **M2.5\*6mm screws** for fixing the keycap to the bearing.
 * 6x **M2\*8mm screws** for fixing the bearing and the sensor PCB to the lever.
-* 6x **M3\*12mm screws** for fixing the housing parts together.
+* 6x **M3\*12mm screws** for fixing the housing parts together. If you plan to use heatset inserts, use **M3\*10mm screws** instead.
+* 6x **M3\*4mm\*4mm heatset inserts**, only if you choose heatset insert version of the panel.
 * 1x 6700zz (10x15x4mm) bearings for the spinner, just buy cheapest ones. They may come packed with a heavy weight oil that arrests rotation, this can be corrected by thoroughly degreasing the bearings and relubricating them with a lightweight oil like Super Lube ISO 68. For example, a soak and spin in 99% isopropyl alcohol, dry on a heated plate to remove the excess alcohol and thin and remaining grease, then a final wash in acetone (if you have all-metal bearings) and additional heated dry before relubricating will ensure the bearings spin freely.
   https://www.amazon.com/uxcell-6700ZZ-Groove-Bearings-Shielded/dp/B082PPYZQX/
 * 1x round magnet, 5mm diameter (4mm also works if you stick it well), 1.5mm or 2mm tall, MUST be radially/diametrically magnetized (N-S poles on the curved side).  
@@ -127,7 +128,7 @@ You may need to build 2 to 4 controllers for a pary. For each controller:
   https://www.walmart.com/ip/Unique-Bargains-RC-Toy-Car-Frame-Part-Stainless-Steel-Round-Rod-Shaft-25mm-x-2mm-40-Pcs/108734138?wmlspartner=wlpa&selectedSellerId=571
 * Some good tape (such as acetate tape or high-temp teflon tape) to fix the magnets in place.
 * PTFE or UHMW tape for the sliding surfaces.
-* Silicone anti-slip pads (10-12mm diameter) for the bottom.  
+* Silicone anti-slip pads (12mm diameter, 2-3mm thickness) for the bottom.  
   <img src="doc/anti_slip_pads.jpg" width="60%">
 * Clear soft/flexible glue or UV curing glue. WARNING: Avoid using any cyanoacrylate-based glue, such as 502. Any glue with a similar smell should also be avoided, as they will leave white smoke marks on the acrylic.
 * Optional but good to have: plastic washer (ring pads), 0.5mm thick, 2.1~2.5mm inner diameter, 5-10mm outer diameter.  

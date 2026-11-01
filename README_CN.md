@@ -107,7 +107,7 @@ https://discord.gg/M8f2PPQFEA
 #### 外壳部分
 * 基座: `Production\3DPrint\bishi_base.stl`, 灰色，如果你有多色打印系统，使用特殊支撑材料以获得更好的螺丝孔表面。
 * 中框: `Production\3DPrint\bishi_support.stl`, 透明。
-* 面板: `Production\3DPrint\bishi_panel.3mf`, 灰色，如果你有多色打印系统，用黑色打印 logo 和线条部分。
+* 面板: `Production\3DPrint\bishi_panel.3mf` (如果你打算使用热嵌螺母，请使用 `_insert` 版本), 灰色，如果你有多色打印系统，用黑色打印 logo 和线条部分。
 
 #### 3x 按钮座
 * 按钮座: `Production\3DPrint\bishi_button_seat.stl`, 白色，倒过来打印。
@@ -118,7 +118,8 @@ https://discord.gg/M8f2PPQFEA
   https://www.amazon.com/Plastic-Fillable-Ornaments-Acrylic-Christmas/dp/B09ZTSGL28/
 * 1x **M2.5\*6mm 螺丝** 用于将键帽固定到轴承上。
 * 6x **M2\*8mm 螺丝** 用于把轴承和传感器 PCB 固定到平衡杆上。
-* 6x **M3\*12mm 螺丝** 用于固定外壳。
+* 6x **M3\*12mm 螺丝** 用于自攻的方式固定外壳；如果使用热嵌螺母，则改为使用 **M3\*10mm 螺丝**。
+* 6x **M3\*4mm\*4mm 热嵌螺母**，仅当你选择使用热嵌螺母版本的面板时才需要。
 * 1x 6700zz (10x15x4mm) 轴承用于转盘，买最便宜的就行。如果你买到的轴承阻尼很大很难转动，你需要人工把轴承里面的润滑油（阻尼油）擦干净，然后加入适量的润滑脂。  
   https://www.amazon.com/uxcell-6700ZZ-Groove-Bearings-Shielded/dp/B082PPYZQX/
 * 1x 圆形磁铁，直径 5-7mm（3mm 或 4mm 也可以，只要你有办法粘住就好），高度 1.5mm 或 2mm，必须是径向/直径磁化的（N-S 极在弧面一侧）。  
@@ -127,7 +128,7 @@ https://discord.gg/M8f2PPQFEA
   https://www.walmart.com/ip/Unique-Bargains-RC-Toy-Car-Frame-Part-Stainless-Steel-Round-Rod-Shaft-25mm-x-2mm-40-Pcs/108734138?wmlspartner=wlpa&selectedSellerId=571
 * 一些好的胶带（如醋酸胶带或高温聚四氟乙烯胶带）用于固定磁铁。
 * 用于滑动表面的 PTFE 或 UHMW 胶带。
-* 底部的硅胶防滑垫。  
+* 底部的硅胶防滑垫（直径 12mm，厚度 2-3mm）。  
   <img src="doc/anti_slip_pads.jpg" width="60%">
 * 透明软性胶或者 UV 固化胶。警告：避免使用任何氰基胶，比如 502 胶。任何有类似气味的胶也要避免，因为它们会在亚克力上留下白色雾化痕迹。
 * 可选，但很有用：硬塑料垫片（环垫），0.5mm 厚，2.1~2.5mm 内径，5-10mm 外径。
